@@ -31,4 +31,7 @@ ENV REGAL_VERSION=${REGAL_VERSION}
 RUN curl -L -o /usr/bin/regal https://github.com/StyraInc/regal/releases/download/v${REGAL_VERSION}/regal_Linux_x86_64 && \
     chmod +x /usr/bin/regal
 
+# raygun cli
+COPY --from=docker.io/mheers/opa-raygun:latest /raygun /usr/bin/raygun
+
 ENTRYPOINT [ "bash" ]
