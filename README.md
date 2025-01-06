@@ -9,3 +9,4 @@ Includes:
 - [policy](https://github.com/opcr-io/policy) - CLI for managing authorization policies and pushing them to OCI registries
 - [oras](https://oras.land/) - OCI Registry As Storage
 - [raygun](https://github.com/mheers/opa-raygun) - Blackbox OPA Rego Policy Tester
+- [cosign](https://hub.docker.com/r/bitnami/cosign) - Cosign supports container signing, verification, and storage in an OCI registry

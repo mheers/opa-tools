@@ -12,5 +12,6 @@ docker: ##  Builds and pushes the application for amd64
 		--build-arg POLICY_CLI_VERSION=$(POLICY_CLI_VERSION) \
 		--build-arg OPA_VERSION=$(OPA_VERSION) \
 		--build-arg REGAL_VERSION=$(REGAL_VERSION) \
+		--build-arg COSIGN_VERSION=$(COSIGN_VERSION) \
 		--platform linux/amd64 -t mheers/opa-tools:$(OPA_VERSION) -t mheers/opa-tools:latest \
 		--push .
