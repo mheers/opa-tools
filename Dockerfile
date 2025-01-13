@@ -38,6 +38,7 @@ RUN curl -L -o /usr/bin/regal https://github.com/StyraInc/regal/releases/downloa
 # raygun cli
 COPY --from=docker.io/mheers/opa-raygun:latest /raygun /usr/bin/raygun
 
+# cosign
 COPY --from=cosign /opt/bitnami/cosign/bin/cosign /usr/local/bin/cosign
 
 ENTRYPOINT [ "bash" ]
