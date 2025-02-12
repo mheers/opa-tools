@@ -14,11 +14,11 @@ Includes:
 ## Image signature creation
 
 ```bash
-cosign sign mheers/opa-tools:1.0.0
+cosign sign mheers/opa-tools:1.1.0
 ```
 
 ## Image signature verification
 
 ```bash
-cosign verify mheers/opa-tools:1.0.0 --certificate-identity=github@NightSteam.de --certificate-oidc-issuer=https://github.com/login/oauth
+cosign verify mheers/opa-tools:1.1.0 --certificate-identity=github@NightSteam.de --certificate-oidc-issuer=https://github.com/login/oauth
 ```
