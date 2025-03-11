@@ -3,9 +3,11 @@ ARG ALPINE_TOOLS_VERSION=3.20.3
 # cosign and raygun
 ARG COSIGN_VERSION=2.4.1
 ARG RAYGUN_VERSION=0.1.5
+ARG RAYGUN2X_VERSION=0.0.1
 
 FROM bitnami/cosign:${COSIGN_VERSION} AS cosign
 FROM mheers/opa-raygun:v${RAYGUN_VERSION} AS raygun
+FROM mheers/raygun2x:v${RAYGUN2X_VERSION} AS raygun2x
 
 FROM --platform=$BUILDPLATFORM mheers/alpine-tools:${ALPINE_TOOLS_VERSION}
 
@@ -40,6 +42,9 @@ RUN curl -L -o /usr/bin/regal https://github.com/StyraInc/regal/releases/downloa
 
 # raygun cli
 COPY --from=raygun /raygun /usr/bin/raygun
+
+# raygun2x cli
+COPY --from=raygun2x /usr/local/bin/raygun2x /usr/bin/raygun2x
 
 # cosign
 COPY --from=cosign /opt/bitnami/cosign/bin/cosign /usr/local/bin/cosign
