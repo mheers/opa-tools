@@ -22,8 +22,8 @@ RUN cd /tmp && \
 # opa cli
 ARG OPA_VERSION=0.69.0
 ENV OPA_VERSION=${OPA_VERSION}
-RUN curl -L -o /usr/local/opa https://openpolicyagent.org/downloads/v${OPA_VERSION}/opa_linux_amd64_static && \
-    chmod +x /usr/local/opa
+RUN curl -L -o /usr/local/bin/opa https://openpolicyagent.org/downloads/v${OPA_VERSION}/opa_linux_amd64_static && \
+    chmod +x /usr/local/bin/opa
 
 # oras cli
 ARG ORAS_VERSION=1.2.0
@@ -37,14 +37,14 @@ RUN curl -LO https://github.com/oras-project/oras/releases/download/v${ORAS_VERS
 # regal cli
 ARG REGAL_VERSION=0.28.0
 ENV REGAL_VERSION=${REGAL_VERSION}
-RUN curl -L -o /usr/local/regal https://github.com/StyraInc/regal/releases/download/v${REGAL_VERSION}/regal_Linux_x86_64 && \
-    chmod +x /usr/local/regal
+RUN curl -L -o /usr/local/bin/regal https://github.com/StyraInc/regal/releases/download/v${REGAL_VERSION}/regal_Linux_x86_64 && \
+    chmod +x /usr/local/bin/regal
 
 # raygun cli
-COPY --from=raygun /raygun /usr/local/raygun
+COPY --from=raygun /raygun /usr/local/bin/raygun
 
 # raygun2x cli
-COPY --from=raygun2x /usr/local/bin/raygun2x /usr/local/raygun2x
+COPY --from=raygun2x /usr/local/bin/raygun2x /usr/local/bin/raygun2x
 
 # cosign
 COPY --from=cosign /opt/bitnami/cosign/bin/cosign /usr/local/bin/cosign
