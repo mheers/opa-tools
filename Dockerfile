@@ -4,10 +4,12 @@ ARG ALPINE_TOOLS_VERSION=3.20.3
 ARG COSIGN_VERSION=2.4.1
 ARG RAYGUN_VERSION=0.1.5
 ARG RAYGUN2X_VERSION=0.0.1
+ARG REPLAY_VERSION=0.0.1
 
 FROM bitnami/cosign:${COSIGN_VERSION} AS cosign
 FROM mheers/opa-raygun:v${RAYGUN_VERSION} AS raygun
 FROM mheers/raygun2x:v${RAYGUN2X_VERSION} AS raygun2x
+FROM mheers/opa-replay:v${REPLAY_VERSION} AS replay
 
 FROM --platform=$BUILDPLATFORM mheers/alpine-tools:${ALPINE_TOOLS_VERSION}
 
@@ -45,6 +47,9 @@ COPY --from=raygun /raygun /usr/local/bin/raygun
 
 # raygun2x cli
 COPY --from=raygun2x /usr/local/bin/raygun2x /usr/local/bin/raygun2x
+
+# opa-replay cli
+COPY --from=replay /usr/local/bin/opa-replay /usr/local/bin/opa-replay
 
 # cosign
 COPY --from=cosign /opt/bitnami/cosign/bin/cosign /usr/local/bin/cosign

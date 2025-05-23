@@ -14,5 +14,7 @@ docker: ##  Builds and pushes the application for amd64
 		--build-arg REGAL_VERSION=$(REGAL_VERSION) \
 		--build-arg COSIGN_VERSION=$(COSIGN_VERSION) \
 		--build-arg RAYGUN_VERSION=$(RAYGUN_VERSION) \
+		--build-arg RAYGUN2X_VERSION=$(RAYGUN2X_VERSION) \
+		--build-arg REPLAY_VERSION=$(REPLAY_VERSION) \
 		--platform linux/amd64 -t mheers/opa-tools:$(OPA_VERSION) -t mheers/opa-tools:latest \
 		--push .
