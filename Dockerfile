@@ -1,10 +1,14 @@
 ARG ALPINE_TOOLS_VERSION=3.20.3
 
-# cosign and raygun
+# cosign, raygun(2x), and opa-replay
 ARG COSIGN_VERSION=2.4.1
 ARG RAYGUN_VERSION=0.1.5
 ARG RAYGUN2X_VERSION=0.0.1
 ARG REPLAY_VERSION=0.0.1
+
+# Build stage for mcp language server
+FROM golang:1.24-alpine AS mcp
+RUN go install github.com/isaacphi/mcp-language-server@latest
 
 FROM bitnami/cosign:${COSIGN_VERSION} AS cosign
 FROM mheers/opa-raygun:v${RAYGUN_VERSION} AS raygun
@@ -53,5 +57,8 @@ COPY --from=replay /usr/local/bin/opa-replay /usr/local/bin/opa-replay
 
 # cosign
 COPY --from=cosign /opt/bitnami/cosign/bin/cosign /usr/local/bin/cosign
+
+# mcp language server
+COPY --from=mcp /go/bin/mcp-language-server /usr/local/bin/mcp-language-server
 
 ENTRYPOINT [ "bash" ]

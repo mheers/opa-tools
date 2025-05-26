@@ -13,6 +13,7 @@ Includes:
 - [raygun](https://github.com/mheers/opa-raygun) - Blackbox OPA Rego Policy Tester
 - [raygun2x](https://github.com/mheers/raygun2x) - CLI tool that converts raygun test suites into either an OpenAPI specification or a Postman Collection
 - [cosign](https://hub.docker.com/r/bitnami/cosign) - Cosign supports container signing, verification, and storage in an OCI registry
+- [mcp-language-server](https://github.com/isaacphi/mcp-language-server) - General Language server MCP implementation
 
 ## Image signature creation
 
